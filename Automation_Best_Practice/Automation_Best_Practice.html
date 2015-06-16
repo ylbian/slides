@@ -433,7 +433,7 @@ em {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h4 id="automation-best-practices">Automation Best Practices</h4>
+    <section class="slide-content"><h3 id="automation-best-practices">Automation Best Practices</h3>
 <h5 id="introduction">Introduction</h5>
 <ul>
 <li><p>This is not a user guide of <a href="http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html">Robot Framework</a></p>
@@ -446,9 +446,198 @@ em {
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"></section>
+    <section class="slide-content"><h3 id="robot-framework-layers">Robot Framework Layers</h3>
+<ul>
+<li><p>Following picture illustrates the architecture of robot framework automation project</p>
+<p><img src="/home/ybian/workdir/slides/Automation_Best_Practice/robotframework.png" alt="Architecture"></p>
+<p>*</p>
+<ul>
+<li>Test cases file: test suite</li>
+<li>Resources file: variables and high-level user keywords</li>
+<li>Library: low-level keywords</li>
+</ul>
+</li>
+</ul>
+</section>
   </div>
   <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><h4 id="structure">Structure</h4>
+<pre><code>.
+├── cases
+│   ├── 01__webui
+│   │   └── 01__wiki_test.txt
+│   └── 02__cmd
+│       └── 01__gherkin.txt
+├── doc
+│   ├── demo_cases_doc.html
+│   └── resource_docs
+│       ├── cmd_res.html
+│       ├── common_res.html
+│       ├── home_page.html
+│       ├── ride_page.html
+│       ├── search_page.html
+│       └── wiki_robot_page.html
+├── others
+│   └── __init__.py
+├── resources
+│   ├── CalculatorLibrary.py
+│   ├── calculator.py
+│   ├── cmd_res.txt
+│   ├── common_res.txt
+│   ├── home_page.txt
+│   ├── ride_page.txt
+│   ├── search_page.txt
+│   └── wiki_robot_page.txt
+├── results
+│   └── __init__.py
+└── scripts
+    └── __init__.py</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h3 id="files-formats">Files formats</h3>
+<ul>
+<li><p>For Test and Resources Format we use  <em>Plain Text Format</em></p>
+</li>
+<li><p>Using <em>two or more spaces</em></p>
+<ul>
+<li>Do not use <em>pipe character</em></li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h4 id="tips">Tips</h4>
+<ul>
+<li><p>Tabs or Spaces?
+Spaces
+Or soft-tabs with 2 or 4 space indent, means you need set your editor as &quot;Convert Indentation Spaces&quot;</p>
+</li>
+<li><p>Keep lines fewer than 80 characters, use <code>...</code> when it too long</p>
+</li>
+<li><p>Never leave trailing whitespace</p>
+</li>
+<li><p>End of file with a blank newline</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h4 id="tips">Tips</h4>
+<ul>
+<li><p>Indent with 4 spaces
+Use at least 4 spaces between columns.</p>
+</li>
+<li><p>Separate tables with two blank lines
+Separate tests or keywords with a single blank line</p>
+</li>
+<li><p>Documatations: best add document for every suite, case, keyword and library</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h4 id="naming-conventions">Naming Conventions</h4>
+<ul>
+<li><p>Suite Names: use the &quot;lower_case_with_underscores&quot;</p>
+</li>
+<li><p>Test Steps: use the &quot;Given/When/Then&quot;</p>
+</li>
+<li><p>Keyword Names: use the &quot;Cap Words&quot; style</p>
+</li>
+<li><p>Global General Variable Names: use the &quot;${CapWords}&quot;</p>
+</li>
+<li><p>Page Elements Variable Names: use the &quot;${CapWords Locator}&quot;
+NOTE: the &quot;Locator&quot; includes &quot;Locator&quot;, &quot;ID&quot;, &quot;Name&quot;, &quot;Text&quot;, &quot;Class&quot;, etc.</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h4 id="test-suite-file-">Test Suite File:</h4>
+<pre><code>*** Settings ***
+Documentation    A test suite with a single test for try page objects
+...
+...              against the Wikipedia Site
+Resource         ../../resources/common_res.txt
+Test Teardown    Close All Browsers
+
+
+*** Test Cases ***
+Case 317459 demo show 1
+    [Documentation]    This Test Case uses a higher level wikipedia resource
+    ...                for showing Page Resource.
+    [Tags]             ID_317459    tag1
+    Given open browser to wiki home page
+    When search for robot framework on wikipedia
+    Then from Robot framework wiki page goto RIDE page
+
+Case 317460 demo show 2
+    [Documentation]    This Test Case uses a higher level wikipedia resource
+    ...                for showing Page Resource.
+    [Tags]             ID_317460    tag2
+    Then search a string</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h4 id="resource-file-">Resource File:</h4>
+<pre><code>*** Settings ***
+Documentation     A resource file containing WiKi home page specific keywords.
+...
+...               domain specific language. They utilize keywords provided
+...               by the imported Selenium2Library.
+Library           Selenium2Library
+Resource          common_res.txt
+
+
+*** Variables ***
+#************************** Common Variables ******************************
+${HomePage URL}              http://${Server}
+${HomePage Title}            Wikipedia
+${Search Text}               Robot Framework
+
+#************************** Page Elements *********************************
+${SearchInput ID}            searchInput
+${SearchSubmitButton ID}     go
+
+
+*** Keywords ***
+Open Browser To Wiki Home Page
+    [Documentation]       For Open WiKi Home Page.
+    Open Browser          ${HomePage URL}             ${Browser}
+    Maximize Browser Window
+    Set Selenium Speed    ${Delay}
+    Title Should Be       ${HomePage Title}
+
+Search For Robot Framework
+    [Documentation]       do search operation
+    Input Text            ${SearchInput ID}           ${Search Text}
+    Click Button          ${SearchSubmitButton ID}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h3 id="writing-maintainable-automation-scripts">Writing Maintainable Automation Scripts</h3>
+<ul>
+<li>Writing Automation is Software Development</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h4 id="references">References</h4>
+<ul>
+<li><p><a href="http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html">Robot Framework Guide</a></p>
+</li>
+<li><p><a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a></p>
+</li>
+<li><p><a href="http://dhemery.com/pdf/writing_maintainable_automated_acceptance_tests.pdf">Writing Maintainable Automation Scripts</a></p>
+</li>
+<li><p><a href="http://gojko.net/2010/06/16/anatomy-of-a-good-acceptance-test/">Anatomy of a good acceptance test</a></p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><div class="author">
   <h1 class="name">ybian</h1>
     <h3 class="email">
