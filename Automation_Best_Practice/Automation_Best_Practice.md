@@ -7,9 +7,11 @@ output: Automation_Best_Practice.html
 
 --
 
-### Automation Best Practices
+# Automation Best Practices
 
-##### Introduction
+--
+
+### Introduction
 
   * This is not a user guide of [Robot Framework][Robot Framework]
 
