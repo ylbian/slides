@@ -27,7 +27,7 @@ output: Automation_Best_Practice.html
 
   Following picture illustrates the architecture of robot framework automation project
 
-  ![Architecture](https://github.com/ylbian/slides/tree/master/Automation_Best_Practice/robotframework.png)
+  ![Architecture](../Automation_Best_Practice/robotframework.png)
 
 --
 ## Robot Framework Layers
