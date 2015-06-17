@@ -32,9 +32,9 @@ output: Automation_Best_Practice.html
 --
 ## Robot Framework Layers
 
-  - Test cases file: test suite
-  - Resources file: variables and high-level user keywords
-  - Library: low-level keywords
+  - [Test cases file](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#test-case-files): test suite
+  - [Resources file](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#resource-files): variables and high-level user keywords
+  - [Library](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#using-test-libraries): low-level keywords
 
 --
 
@@ -68,9 +68,9 @@ output: Automation_Best_Practice.html
 
 ## Files formats
 
-  * For Test and Resources Format we use  **Plain Text Format**
+  * For Test and Resources Format we use  [**Plain Text Format**](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#plain-text-format)
 
-  * Using **two or more spaces**
+  * Using [**two or more spaces**](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#plain-text-format)
     - Do not use **pipe character**
 
 --
@@ -105,15 +105,15 @@ output: Automation_Best_Practice.html
 
 ### Naming Conventions
 
-  * Suite Names: use the `lower_case_with_underscores`
+  * Suite Names: use the [`lower_case_with_underscores`](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
 
-  * Test Steps: use the `Given/When/Then`
+  * Test Steps: use the [`Given/When/Then`](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
 
-  * Keyword Names: use the `Cap Words` style
+  * Keyword Names: use the [`Cap Words`](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html) style
 
-  * Global General Variable Names: use the `${CapWords}`
+  * Global General Variable Names: use the [`${CapWords}`](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
 
-  * Page Elements Variable Names: use the `${CapWords Locator}`
+  * Page Elements Variable Names: use the [`${CapWords Locator}`](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html)
 
 --
 

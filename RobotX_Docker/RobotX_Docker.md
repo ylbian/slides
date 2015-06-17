@@ -11,11 +11,21 @@ output: RobotX_Docker.html
 
 --
 
+### Agenda
+
+  * Why Docker?
+
+  * What is Docker?
+
+  * Using Docker for automation
+
+--
+
 ### Automation problems
 
   * Compute instance on [OpenStack][OpenStack] became very slow after a period of time
 
-  * Automation test run will breakdown if there any network issue when running distributed
+  * Automation test run will breakdown if there is any network issue when running distributed
 
   * [TCMS][TCMS] is slow, read/write operation in [TCMS][TCMS] waste lots of time
 
@@ -26,7 +36,7 @@ output: RobotX_Docker.html
 
 ### What is Docker
 
-  * [Docker][Docker] is an open-source plantform of containers, which is an additional layer of operating-system-level virtualization on Linux.
+  * [Docker][Docker] is an open-source platform of containers, which is an additional layer of operating-system-level virtualization on Linux.
 
     - [Linux kernel namaspaces](https://www.kernel.org/doc/Documentation/namespaces/)
 
@@ -80,20 +90,20 @@ output: RobotX_Docker.html
 
 ### How to run/start/stop/delete Docker container
 
-  * `$ docker run -it --name test fedora:21 /bin/bash`
+  * [`$ docker run -it --name test fedora:21 /bin/bash`](http://docs.docker.com/userguide/)
 
-  * `$ docker start test`
-    `$ docker attach test`
+  * [`$ docker start test`](http://docs.docker.com/userguide/)
+    [`$ docker attach test`](http://docs.docker.com/userguide/)
 
-  * `$ docker stop test`
+  * [`$ docker stop test`](http://docs.docker.com/userguide/)
 
-  * `$ docker rm test`
+  * [`$ docker rm test`](http://docs.docker.com/userguide/)
 
 --
 
 ### Docker Images
 
-  * [Docker images][Docker images] is a read-only tmplate.
+  * [Docker images][Docker images] is a read-only template.
 
   * Images are used to create [container][Docker container].
 
@@ -101,7 +111,7 @@ output: RobotX_Docker.html
 
     - [Docker Hub][Docker Hub]
 
-    - Build Docker image yourself
+    - Build Docker image by yourself
 
 
 [Docker container]: http://docs.docker.com/userguide/usingdocker/
@@ -114,7 +124,7 @@ output: RobotX_Docker.html
 
   * [Dockerfile][Dockerfile] is a document that contains all the commands you would execute manually in order to build a Docker image.
 
-  * `$ docker build -t test .`
+  * [`$ docker build -t test .`](http://docs.docker.com/userguide/)
 
 [Dockerfile]: http://docs.docker.com/reference/builder
 
@@ -122,29 +132,29 @@ output: RobotX_Docker.html
 
 ### Build our automation Docker image
 
-  * `FROM`: sets the Base Iamge for subsequent instructions.
+  * [`FROM`](http://docs.docker.com/reference/builder/#from): sets the base image for subsequent instructions
 
-  * `RUN`: execute any commands in a new layer on the top of the current iamge and commit the results
+  * [`RUN`](http://docs.docker.com/reference/builder/#run): execute any commands in a new layer on the top of the current image and commit the results
 
-  * `ENV`: sets the environment variable `<key>` to the value `<value>`
+  * [`ENV`](http://docs.docker.com/reference/builder/#env): sets the environment variable `<key>` to the value `<value>`
 
-  * `CMD`: provide defaults for an executing container. There only be one CMD in a Dockerfile
+  * [`CMD`](http://docs.docker.com/reference/builder/#cmd): provide defaults for an executing container. There only be one CMD in a Dockerfile
 
 --
 
 ### Using Xvfb to create a fake display for firefox
 
-  * Docker container do not have a dispaly
+  * Docker container do not have a display
 
   * Most of our automation test cases are web related
 
   * Using [Xvfb][Xvfb]
 
-    - `export DISPLAY=:99`
+    - [`export DISPLAY=:99`](http://docs.docker.com/userguide/)
 
-    - `Xvfb :99 &`
+    - [`Xvfb :99 &`](http://docs.docker.com/userguide/)
 
-    - `firefox`
+    - [`firefox`](http://docs.docker.com/userguide/)
 
 
 [Xvfb]:http://www.x.org/archive/X11R7.6/doc/man/man1/Xvfb.1.xhtml
@@ -156,7 +166,11 @@ output: RobotX_Docker.html
   * We can use one container for storing automation code, and other containers read from this container
 
   * Start a contianer for storing
-    - `$ docker run --itd -v /data/ --name git-branch_name git /bin/bash`
+    - [`$ docker run --itd -v /data/ --name git-branch_name git /bin/bash`](http://docs.docker.com/userguide/)
 
   * Start a container for running
-    - `$ docker run -it --volumes-from git-branch_name --name test_robotx robotx /bin/bash`
+    - [`$ docker run -it --volumes-from git-branch_name --name test_robotx robotx /bin/bash`](http://docs.docker.com/userguide/)
+
+--
+
+# Q & A

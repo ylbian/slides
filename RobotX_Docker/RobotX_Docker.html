@@ -741,11 +741,23 @@ code {
 
   </section>
   <section>
+    <h3 id="agenda">Agenda</h3>
+<ul>
+<li><p>Why Docker?</p>
+</li>
+<li><p>What is Docker?</p>
+</li>
+<li><p>Using Docker for automation</p>
+</li>
+</ul>
+
+  </section>
+  <section>
     <h3 id="automation-problems">Automation problems</h3>
 <ul>
 <li><p>Compute instance on <a href="https://www.openstack.org/">OpenStack</a> became very slow after a period of time</p>
 </li>
-<li><p>Automation test run will breakdown if there any network issue when running distributed</p>
+<li><p>Automation test run will breakdown if there is any network issue when running distributed</p>
 </li>
 <li><p><a href="https://tcms.engineering.redhat.com/">TCMS</a> is slow, read/write operation in <a href="https://tcms.engineering.redhat.com/">TCMS</a> waste lots of time</p>
 </li>
@@ -755,7 +767,7 @@ code {
   <section>
     <h3 id="what-is-docker">What is Docker</h3>
 <ul>
-<li><p><a href="https://www.docker.com/">Docker</a> is an open-source plantform of containers, which is an additional layer of operating-system-level virtualization on Linux.</p>
+<li><p><a href="https://www.docker.com/">Docker</a> is an open-source platform of containers, which is an additional layer of operating-system-level virtualization on Linux.</p>
 <ul>
 <li><p><a href="https://www.kernel.org/doc/Documentation/namespaces/">Linux kernel namaspaces</a></p>
 </li>
@@ -806,14 +818,14 @@ code {
   <section>
     <h3 id="how-to-run-start-stop-delete-docker-container">How to run/start/stop/delete Docker container</h3>
 <ul>
-<li><p><code>$ docker run -it --name test fedora:21 /bin/bash</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>$ docker run -it --name test fedora:21 /bin/bash</code></a></p>
 </li>
-<li><p><code>$ docker start test</code>
-<code>$ docker attach test</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>$ docker start test</code></a>
+<a href="http://docs.docker.com/userguide/"><code>$ docker attach test</code></a></p>
 </li>
-<li><p><code>$ docker stop test</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>$ docker stop test</code></a></p>
 </li>
-<li><p><code>$ docker rm test</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>$ docker rm test</code></a></p>
 </li>
 </ul>
 
@@ -821,7 +833,7 @@ code {
   <section>
     <h3 id="docker-images">Docker Images</h3>
 <ul>
-<li><p><a href="http://docs.docker.com/userguide/dockerimages/">Docker images</a> is a read-only tmplate.</p>
+<li><p><a href="http://docs.docker.com/userguide/dockerimages/">Docker images</a> is a read-only template.</p>
 </li>
 <li><p>Images are used to create <a href="http://docs.docker.com/userguide/usingdocker/">container</a>.</p>
 </li>
@@ -829,7 +841,7 @@ code {
 <ul>
 <li><p><a href="https://hub.docker.com/">Docker Hub</a></p>
 </li>
-<li><p>Build Docker image yourself</p>
+<li><p>Build Docker image by yourself</p>
 </li>
 </ul>
 </li>
@@ -841,7 +853,7 @@ code {
 <ul>
 <li><p><a href="http://docs.docker.com/reference/builder">Dockerfile</a> is a document that contains all the commands you would execute manually in order to build a Docker image.</p>
 </li>
-<li><p><code>$ docker build -t test .</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>$ docker build -t test .</code></a></p>
 </li>
 </ul>
 
@@ -849,13 +861,13 @@ code {
   <section>
     <h3 id="build-our-automation-docker-image">Build our automation Docker image</h3>
 <ul>
-<li><p><code>FROM</code>: sets the Base Iamge for subsequent instructions.</p>
+<li><p><a href="http://docs.docker.com/reference/builder/#from"><code>FROM</code></a>: sets the base image for subsequent instructions</p>
 </li>
-<li><p><code>RUN</code>: execute any commands in a new layer on the top of the current iamge and commit the results</p>
+<li><p><a href="http://docs.docker.com/reference/builder/#run"><code>RUN</code></a>: execute any commands in a new layer on the top of the current image and commit the results</p>
 </li>
-<li><p><code>ENV</code>: sets the environment variable <code>&lt;key&gt;</code> to the value <code>&lt;value&gt;</code></p>
+<li><p><a href="http://docs.docker.com/reference/builder/#env"><code>ENV</code></a>: sets the environment variable <code>&lt;key&gt;</code> to the value <code>&lt;value&gt;</code></p>
 </li>
-<li><p><code>CMD</code>: provide defaults for an executing container. There only be one CMD in a Dockerfile</p>
+<li><p><a href="http://docs.docker.com/reference/builder/#cmd"><code>CMD</code></a>: provide defaults for an executing container. There only be one CMD in a Dockerfile</p>
 </li>
 </ul>
 
@@ -863,17 +875,17 @@ code {
   <section>
     <h3 id="using-xvfb-to-create-a-fake-display-for-firefox">Using Xvfb to create a fake display for firefox</h3>
 <ul>
-<li><p>Docker container do not have a dispaly</p>
+<li><p>Docker container do not have a display</p>
 </li>
 <li><p>Most of our automation test cases are web related</p>
 </li>
 <li><p>Using <a href="http://www.x.org/archive/X11R7.6/doc/man/man1/Xvfb.1.xhtml">Xvfb</a></p>
 <ul>
-<li><p><code>export DISPLAY=:99</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>export DISPLAY=:99</code></a></p>
 </li>
-<li><p><code>Xvfb :99 &amp;</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>Xvfb :99 &amp;</code></a></p>
 </li>
-<li><p><code>firefox</code></p>
+<li><p><a href="http://docs.docker.com/userguide/"><code>firefox</code></a></p>
 </li>
 </ul>
 </li>
@@ -887,15 +899,19 @@ code {
 </li>
 <li><p>Start a contianer for storing</p>
 <ul>
-<li><code>$ docker run --itd -v /data/ --name git-branch_name git /bin/bash</code></li>
+<li><a href="http://docs.docker.com/userguide/"><code>$ docker run --itd -v /data/ --name git-branch_name git /bin/bash</code></a></li>
 </ul>
 </li>
 <li><p>Start a container for running</p>
 <ul>
-<li><code>$ docker run -it --volumes-from git-branch_name --name test_robotx robotx /bin/bash</code></li>
+<li><a href="http://docs.docker.com/userguide/"><code>$ docker run -it --volumes-from git-branch_name --name test_robotx robotx /bin/bash</code></a></li>
 </ul>
 </li>
 </ul>
+
+  </section>
+  <section>
+    <h1 id="q-a">Q &amp; A</h1>
 
   </section>
   <section>
