@@ -2,7 +2,7 @@ title: Automation Best Practices
 author:
     name: ybian
     email: ybian@redhat.com
-theme: jdan/cleaver-retro
+theme: sudodoki/reveal-cleaver-theme
 output: Automation_Best_Practice.html
 
 --
@@ -11,7 +11,7 @@ output: Automation_Best_Practice.html
 
 --
 
-### Introduction
+## Introduction
 
   * This is not a user guide of [Robot Framework][Robot Framework]
 
@@ -23,14 +23,14 @@ output: Automation_Best_Practice.html
 
 --
 
-### Robot Framework Layers
+## Robot Framework Layers
 
   Following picture illustrates the architecture of robot framework automation project
 
   ![Architecture](/home/ybian/workdir/slides/Automation_Best_Practice/robotframework.png)
 
 --
-### Robot Framework Layers
+## Robot Framework Layers
 
   - Test cases file: test suite
   - Resources file: variables and high-level user keywords
@@ -38,7 +38,7 @@ output: Automation_Best_Practice.html
 
 --
 
-### Structure
+## Structure
 
 ```
 .
@@ -66,12 +66,12 @@ output: Automation_Best_Practice.html
 
 --
 
-### Files formats
+## Files formats
 
-  * For Test and Resources Format we use  *Plain Text Format*
+  * For Test and Resources Format we use  **Plain Text Format**
 
-  * Using *two or more spaces*
-    - Do not use *pipe character*
+  * Using **two or more spaces**
+    - Do not use **pipe character**
 
 --
 
@@ -85,18 +85,19 @@ output: Automation_Best_Practice.html
 
   * Never leave trailing whitespace
 
+  * End of file with a blank newline
 
 --
 
 ### Tips
 
-  * End of file with a blank newline
+  * Indent with 4 spaces
 
-  * - Indent with 4 spaces
-    - Use at least 4 spaces between columns.
+  * Use at least 4 spaces between columns.
 
-  * - Separate tables with two blank lines
-    - Separate tests or keywords with a single blank line
+  * Separate tables with two blank lines
+
+  * Separate tests or keywords with a single blank line
 
   * Documatations: best add document for every suite, case, keyword and library
 
